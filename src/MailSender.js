@@ -1,22 +1,19 @@
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import config from './utils/config.js';
 
 class MailSender {
   constructor() {
     this._transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
+      host: config.nodemailer.smtp_host,
+      port: config.nodemailer.smtp_port,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
+        user: config.nodemailer.smtp_user,
+        pass: config.nodemailer.smtp_password,
       },
     });
   }
 
   sendEmail(targetEmail, content) {
-    console.log('masuk ke mailsender');
     const message = {
       from: 'Openmusic API',
       to: targetEmail,

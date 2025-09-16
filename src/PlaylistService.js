@@ -6,7 +6,6 @@ class PlaylistService {
   }
 
   async getPlaylists(playlistId) {
-    console.log('masuk ke getPlaylist');
     if (!playlistId) throw new Error('User ID is required');
 
     const query = {
